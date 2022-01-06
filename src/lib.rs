@@ -22,4 +22,13 @@ impl RandVec {
 
         arr
     }
+
+    pub fn generate_matrix<T>(rows: usize, columns: usize) -> Vec<Vec<T>>  where Standard: Distribution<T> {
+        let mut matrix = Vec::new();
+        for _ in 0..rows {
+            matrix.push(RandVec::generate::<T>(columns));
+        }
+
+        matrix
+    }
 }
